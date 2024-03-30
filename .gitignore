@@ -2,6 +2,8 @@
 config.js
 yarn.lock
 package-lock.json
+allowed.json
+string.json
 
 # Logs
 logs
