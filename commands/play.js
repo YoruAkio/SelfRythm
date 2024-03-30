@@ -1,23 +1,15 @@
-const ytdl = require("ytdl-core");
-
+const ytdl = require('ytdl-core');
+const spotifyUrlInfo = require('spotify-url-info')(fetch)
+const ytsr = require('ytsr'); // YouTube search module
 const strings = require("../strings.json");
 const utils = require("../utils");
 
-
-/** 
- * @description Play a song with the provided link
- * @param {Discord.Client} client the client thats runs the commands
- * @param {Discord.Message} message the command's message
- * @param {Array<String>}args args[0] must be a link
- */
-
-
 module.exports.run = async (client, message, args) => {
-
     if(!args[0]) return message.channel.send(strings.noArgsSongSearch);
 
     utils.log("Looking for music details...")
 
+    let FUrl;
     if(utils.isURL(args[0])){
         FUrl = args[0];
     } else {
@@ -26,11 +18,27 @@ module.exports.run = async (client, message, args) => {
 
     let voiceChannel = message.member.voice.channel; 
     const serverQueue = queue.get("queue");
-    const songInfo = await ytdl.getBasicInfo(FUrl);
+    let songInfo;
+    try {
+        if (FUrl.includes('spotify')) {
+            const spotifyInfo = await spotifyUrlInfo.getDetails(FUrl);
+            console.log(spotifyInfo)
+            console.log(`
+            Title: ${spotifyInfo.preview.title}\n
+            Artist: ${spotifyInfo.preview.artist}\n`)
+            const youtubeResults = await ytsr(spotifyInfo.preview.title + ' ' + spotifyInfo.preview.artist, { limit: 1 });
+            FUrl = youtubeResults.items[0].url;
+        }
+        songInfo = await ytdl.getBasicInfo(FUrl);
+        // console.log(songInfo)
+    } catch (error) {
+        console.log(error)
+        return message.channel.send("The provided URL is not a valid YouTube or Spotify URL.\nNOTE: If you want to use Spotify URLs, make sure to use the Spotify URL of a song, not a playlist.");
+    }
 
     const song = {
         title: songInfo.videoDetails.title,
-        duration: songInfo.videoDetails.lengthSeconds,
+        duration: songInfo.videoDetails.durationSec,
         url: FUrl,
         requestedby: message.author.username
     };

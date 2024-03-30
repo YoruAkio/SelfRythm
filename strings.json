@@ -24,5 +24,7 @@
     "startEarrape" : "✅ The volume was successfully set to ___**EARRAPE**___ :ear: :headstone:",
     "endEarrape" : "✅ The volume was successfully set back to VOLUME",
     "musicsQueued": ":musical_note: **Musics queued** :musical_note: :",
-    "earrapeWarning": "⚠ Are you sure ? It can severely damage the hearing of all people in the channel !\nPress the ✅ reaction to continue"
+    "earrapeWarning": "⚠ Are you sure ? It can severely damage the hearing of all people in the channel !\nPress the ✅ reaction to continue",
+    "notYoutubeURL": "❌ Only youtube links are supported",
+    "invalidLink": "The provided URL is not a valid YouTube or Spotify URL.\nNOTE: If you want to use Spotify URLs, make sure to use the Spotify URL of a song, not a playlist."
 }
