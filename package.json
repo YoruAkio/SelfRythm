@@ -23,6 +23,7 @@
     "enmap": "^5.9.8",
     "play-dl": "^1.9.7",
     "spotify-url-info": "^3.2.13",
+    "youtube-sr": "^4.3.11",
     "ytdl-core": "^4.11.5",
     "ytsr": "^3.8.4"
   }
