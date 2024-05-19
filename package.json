@@ -18,11 +18,12 @@
   "homepage": "https://github.com/TheDiscorders/SelfRythm#readme",
   "dependencies": {
     "ascii-table": "^0.0.9",
-    "discord-player": "^6.6.1",
-    "discord.js-selfbot-v13": "^2.14.12",
-    "enmap": "^5.9.8",
+    "discord-player": "^6.6.8",
+    "discord.js-selfbot-v13": "^3.1.4",
+    "enmap": "^6.0.2",
     "play-dl": "^1.9.7",
-    "spotify-url-info": "^3.2.13",
+    "spotify-url-info": "^3.2.14",
+    "youtube-sr": "^4.3.11",
     "ytdl-core": "^4.11.5",
     "ytsr": "^3.8.4"
   }
